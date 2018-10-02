@@ -1,1 +1,28 @@
-/*css Responsive style sheet*/
+/*Responsive style sheet*/
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 800px) {
+
+}
+
+@media screen and (min-width: 1000px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+
+/*.airplane {
+	
+	width: 1200px;
+	background:url(software.png) 0 0px;
+}
+
+.elevator {
+	width: 1000px <= 1200px;
+	background:url(software.png) 0 0px;
+}*/
