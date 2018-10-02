@@ -1,18 +1,48 @@
 /*Responsive style sheet*/
-@media screen and (min-width: 600px) {
 
+
+.software{
+	width: 1204px;
+	height: 1211px;
 }
 
-@media screen and (min-width: 800px) {
-
+@media only screen and (min-width: 0px) and (max-width: 600px) {
+	body{
+		width: 170%;
+		height: 100%;
+		background-image: url("software.png");
+		background-size:300%;
+	}
 }
 
-@media screen and (min-width: 1000px) {
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+	body{
+		width: 200%;
+		height: 100%;
+		background-image: url("software.png");
+		background-size:300%;
+	}
+}
 
+@media screen and (min-width: 800px) and (max-width: 1000px){
+	body{
+		background-image: url("software.png");
+	
+	}
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+	body{
+		background-image: url("software.png");
+		
+	}
 }
 
 @media screen and (min-width: 1200px) {
-
+	body{
+		background-image: url("software.png");
+	
+	}
 }
 
 
