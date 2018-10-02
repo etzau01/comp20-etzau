@@ -1,58 +1,70 @@
 /*Responsive style sheet*/
 
 
-.software{
-	width: 1204px;
-	height: 1211px;
+/*.software{
+	background-image: url("software.png");
+	background-repeat: no-repeat;
+}*/
+
+/* Airplane Safety - Top-left*/
+body{
+	/*position: absolute;
+	background-image: url("software.png");
+	clip: rect(0px, 602px, 605px, 0px);	
+	width: 605.5px;
+	height: 602px;
+	background-size:300%;
+*/
+	background: url("software.png");
+	background-position: 0px 0px;
+	width: 30px;
+	height: 400px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 600px) {
-	body{
-		width: 170%;
-		height: 100%;
-		background-image: url("software.png");
-		background-size:300%;
-	}
-}
-
-@media only screen and (min-width: 600px) and (max-width: 800px) {
-	body{
-		width: 200%;
-		height: 100%;
-		background-image: url("software.png");
-		background-size:300%;
-	}
-}
-
-@media screen and (min-width: 800px) and (max-width: 1000px){
-	body{
-		background-image: url("software.png");
-	
-	}
-}
-
+/*Elevator Safety - Top middle*/
 @media screen and (min-width: 1000px) and (max-width: 1200px) {
 	body{
-		background-image: url("software.png");
-		
+		background: url("software.png");
+		background-position: 770px 0px;
+		width: 100px;
+		height: 400px;
 	}
 }
 
-@media screen and (min-width: 1200px) {
+/*Computerized Voting - top right*/
+@media screen and (min-width: 800px) and (max-width: 1000px){
 	body{
-		background-image: url("software.png");
-	
+		background: url("software.png");
+		background-position: 340px 0px;
+		width: 30px;
+		height: 400px;
 	}
 }
 
 
-/*.airplane {
-	
-	width: 1200px;
-	background:url(software.png) 0 0px;
+/* Wait, Really? - bottom left*/
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+	body{
+		background: url("software.png");
+		background-position: 0px 617px;
+		width: 590px;
+		height: 600px;
+		/*background-size:100%;*/
+	}
 }
 
-.elevator {
-	width: 1000px <= 1200px;
-	background:url(software.png) 0 0px;
-}*/
+/* Blockchain - bottom-right */
+@media only screen and (min-width: 0px) and (max-width: 600px) {
+	body{
+		background: url("software.png");
+		background-position: 480px 620px;
+		width: 30px;
+		height: 400px;
+	}
+}
+
+
+
+
+	
+
