@@ -12,21 +12,71 @@
 
 <video src="https://www.cs.tufts.edu/comp/20/wedo.mp4" id="wedo" controls></video>
 <div id="lyrics"></div>
-<span id = "position"></span>
+
 
 <script>
 	// Complete this section and create a CSS file named style.css
 
 	var vid = document.getElementById("wedo");
-	vid.ontimeupdate = function() {displayLyrics()};
+	vid.addEventListener("time update", displayLyrics, false);
+
 
 	function displayLyrics()
 	{
-		document.getElementById("position").innerHTML = vid.currentTime;
-		if (vid.currentTime == 4.7)
+		if (vid.currentTime >= 4.7)
 		{
-			  document.getElementById("lyrics") = "Who controls the British crown?";
+			  document.getElementById("lyrics").innerHTML = "Who controls the British crown?";
 		}
+		else if (vid.currentTime >= 6.31)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who keeps the metric system down?";
+		}
+		else if (vid.currentTime >= 8.49)
+		{
+			  document.getElementById("lyrics").innerHTML = "We do, we do!";
+		}
+		else if (vid.currentTime >= 12.69)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who keeps Atlantis off the maps?";
+		}
+		else if (vid.currentTime >= 14.83)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who keeps the martians under wraps?";
+		}
+		else if (vid.currentTime >= 17)
+		{
+			  document.getElementById("lyrics").innerHTML = "We do, we do!";
+		}
+		else if (vid.currentTime >= 21)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who holds back the electric car?";
+		}
+		else if (vid.currentTime >= 25.34)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who makes Steve Guttenburg a star?";
+		}
+		else if (vid.currentTime >= 29.93)
+		{
+			  document.getElementById("lyrics").innerHTML = "We do, we do!";
+		}
+		else if (vid.currentTime >= 34)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who robs the cavefish of their sight?";
+		}
+		else if (vid.currentTime >= 36)
+		{
+			  document.getElementById("lyrics").innerHTML = "Who rigs every Oscar night?";
+		}
+		else if (vid.currentTime >= 38)
+		{
+			  document.getElementById("lyrics").innerHTML = "We do!";
+		}
+		else if (vid.currentTime >= 41)
+		{
+			  document.getElementById("lyrics").innerHTML = "We do!";
+		}
+		else 
+			document.getElementById("lyrics").innerHTML = " ";
 	}
 </script>
 </body>

@@ -1,0 +1,16 @@
+body{
+	background-color: brown;
+}
+
+h1{
+	font-size: 45px;
+	font-family: "Comic Sans MS";
+	color: yellow;
+	text-align: center;
+}
+
+#lyrics{	
+	font-size: 25;
+	font-family: "Comic Sans MS";
+	color: yellow;
+}
