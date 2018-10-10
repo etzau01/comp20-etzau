@@ -1,3 +1,3 @@
-1. I successfuly annotated the video with text, using addEventListener. Made a function called displayLyrics(), which displays each line of lyrics when the video has been playing a particular amount of time.
-2. none
-3. 4 hours
+1. I successfuly annotated the video with text, using addEventListener. Made a first class function called displayLyrics() which displays each line of lyrics in the HTML (using the "lyrics" div id) when the video has reached a particular number of seconds. Created a style sheet. 
+2. Ming
+3. 4 hours (Wasn't working for the longest time, until I removed the space in "timeupdate"!)
