@@ -12,9 +12,18 @@
 
 <video src="https://www.cs.tufts.edu/comp/20/wedo.mp4" id="wedo" controls></video>
 <div id="lyrics"></div>
+<span id = "position"></span>
 
 <script>
 	// Complete this section and create a CSS file named style.css
+
+	var vid = document.getElementById("wedo");
+	vid.ontimeupdate = function() {displayLyrics()};
+
+	function displayLyrics()
+	{
+		document.getElementById("position").innerHTML = vid.currentTime;
+	}
 </script>
 </body>
 </html>	
