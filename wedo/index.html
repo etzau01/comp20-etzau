@@ -18,65 +18,65 @@
 	// Complete this section and create a CSS file named style.css
 
 	var vid = document.getElementById("wedo");
-	vid.addEventListener("time update", displayLyrics, false);
-
+	vid.addEventListener("timeupdate", displayLyrics, false);
 
 	function displayLyrics()
 	{
-		if (vid.currentTime >= 4.7)
+		if ((vid.currentTime > 4) && (vid.currentTime < 6))
 		{
 			  document.getElementById("lyrics").innerHTML = "Who controls the British crown?";
 		}
-		else if (vid.currentTime >= 6.31)
+		else if ((vid.currentTime > 6) && (vid.currentTime < 8))
 		{
 			  document.getElementById("lyrics").innerHTML = "Who keeps the metric system down?";
 		}
-		else if (vid.currentTime >= 8.49)
+		else if ((vid.currentTime > 8) && (vid.currentTime < 12))		
 		{
 			  document.getElementById("lyrics").innerHTML = "We do, we do!";
 		}
-		else if (vid.currentTime >= 12.69)
+		else if ((vid.currentTime > 12) && (vid.currentTime < 14))
 		{
 			  document.getElementById("lyrics").innerHTML = "Who keeps Atlantis off the maps?";
 		}
-		else if (vid.currentTime >= 14.83)
+		else if ((vid.currentTime > 14) && (vid.currentTime < 16))
 		{
 			  document.getElementById("lyrics").innerHTML = "Who keeps the martians under wraps?";
 		}
-		else if (vid.currentTime >= 17)
+		else if ((vid.currentTime > 16) && (vid.currentTime < 21))		
 		{
 			  document.getElementById("lyrics").innerHTML = "We do, we do!";
 		}
-		else if (vid.currentTime >= 21)
+		else if ((vid.currentTime > 21) && (vid.currentTime < 25))		
 		{
 			  document.getElementById("lyrics").innerHTML = "Who holds back the electric car?";
 		}
-		else if (vid.currentTime >= 25.34)
+		else if ((vid.currentTime > 25) && (vid.currentTime < 29))		
 		{
 			  document.getElementById("lyrics").innerHTML = "Who makes Steve Guttenburg a star?";
 		}
-		else if (vid.currentTime >= 29.93)
+		else if ((vid.currentTime > 29) && (vid.currentTime < 34))		
 		{
 			  document.getElementById("lyrics").innerHTML = "We do, we do!";
 		}
-		else if (vid.currentTime >= 34)
+		else if ((vid.currentTime > 34) && (vid.currentTime < 36))		
 		{
 			  document.getElementById("lyrics").innerHTML = "Who robs the cavefish of their sight?";
 		}
-		else if (vid.currentTime >= 36)
+		else if ((vid.currentTime > 36) && (vid.currentTime < 38))		
 		{
 			  document.getElementById("lyrics").innerHTML = "Who rigs every Oscar night?";
 		}
-		else if (vid.currentTime >= 38)
+		else if ((vid.currentTime > 38) && (vid.currentTime < 41))		
 		{
 			  document.getElementById("lyrics").innerHTML = "We do!";
 		}
-		else if (vid.currentTime >= 41)
+		else if (vid.currentTime > 41)
 		{
 			  document.getElementById("lyrics").innerHTML = "We do!";
 		}
 		else 
 			document.getElementById("lyrics").innerHTML = " ";
+
 	}
 </script>
 </body>
