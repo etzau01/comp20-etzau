@@ -22,16 +22,21 @@ var linePathCoords = [
   {lat: 42.330154, lng: -71.057655},
   {lat: 42.320685, lng:-71.052391},
 
-  //{lat: 42.31129, lng:-71.053331, 14},
   {lat: 42.275275, lng:-71.029583},
   {lat: 42.2665139, lng:-71.0203369},
-  //{lat: 42.300093, lng:-71.061667, 15},
-  //{lat: 42.29312583,lng:-71.06573796000001, 16},
   {lat: 42.251809, lng:-71.005409},
   {lat: 42.233391, lng:-71.007153},
-  //{lat: 42.284652, lng:-71.06448899999999, 17},
   {lat: 42.2078543, lng:-71.0011385}
 ];
+
+var forkPathCoords = [
+  {lat: 42.320685, lng:-71.052391},
+  {lat: 42.31129, lng:-71.053331},
+  {lat: 42.300093, lng:-71.061667},
+  {lat: 42.29312583,lng:-71.06573796000001},
+  {lat: 42.284652, lng:-71.06448899999999}
+];
+
 
 var linePath = new google.maps.Polyline({
   path: linePathCoords,
@@ -41,7 +46,16 @@ var linePath = new google.maps.Polyline({
   strokeWeight: 2
 });
 
+var forkPath = new google.maps.Polyline({
+  path: forkPathCoords,
+  geodesic: true,
+  strokeColor: '#FF0000',
+  strokeOpacity: 1.0,
+  strokeWeight: 2
+});
+
 linePath.setMap(map);
+forkPath.setMap(map);
 
 }
 
