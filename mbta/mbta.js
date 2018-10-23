@@ -26,7 +26,7 @@ function initMap() {
           var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(position.coords.latitude,position.coords.longitude), new google.maps.LatLng(stop[1], stop[2]));
           if (distance <= shortestDistance){
             shortestDistance = distance;
-            var nearest = stop[0];
+            var nearest = stop[3];
             var nearestlat = stop[1];
             var nearestlng = stop[2];
           }
@@ -130,28 +130,28 @@ function initMap() {
 
 // Data for the stop markers with name and LatLng 
 var tstops = [
-  ['sstat', 42.352271, -71.05524200000001],
-  ['andrw', 42.330154, -71.057655],
-  ['portr', 42.3884, -71.11914899999999],
-  ['harsq', 42.373362, -71.118956],
-  ['jfk', 42.320685, -71.052391],
-  ['shmnl', 42.31129, -71.053331],
-  ['pktrm', 42.35639457, -71.0624242],
-  ['brdwy', 42.342622, -71.0569672],
-  ['nqncy', 42.275275, -71.029583],
-  ['smmnl', 42.29312583,-71.06573796000001],
-  ['davis', 42.39674, -71.121815],
-  ['alfcl', 42.395428, -71.142483],
-  ['knncl', 42.36249079, -71.08617653],
-  ['chmnl', 42.361166, -71.070628],
-  ['dwnxg', 42.355518, -71.06022],
-  ['qnctr', 42.251809, -71.005409],
-  ['qamnl', 42.233391, 71.007153],
-  ['asmnl', 42.284652, -71.06448899999999],
-  ['wlsta', 42.2665139, -71.0203369],
-  ['fldcr', 42.300093, -71.061667],
-  ['cntsq', 42.365486, -71.103802],
-  ['brntn', 42.2078543, -71.0011385]
+  ['place-sstat', 42.352271, -71.05524200000001, 'South Station'],
+  ['place-andrw', 42.330154, -71.057655, 'Andrew'],
+  ['place-portr', 42.3884, -71.11914899999999, 'Porter'],
+  ['place-harsq', 42.373362, -71.118956, 'Harvard Square'],
+  ['place-jfk', 42.320685, -71.052391, 'JFK'],
+  ['place-shmnl', 42.31129, -71.053331, 'Savin Hill'],
+  ['place-pktrm', 42.35639457, -71.0624242, 'Park St'],
+  ['place-brdwy', 42.342622, -71.0569672, 'Broadway'],
+  ['place-nqncy', 42.275275, -71.029583, 'North Quincy'],
+  ['place-smmnl', 42.29312583,-71.06573796000001, 'Shawmut'],
+  ['place-davis', 42.39674, -71.121815, 'Davis'],
+  ['place-alfcl', 42.395428, -71.142483, 'Alewife'],
+  ['place-knncl', 42.36249079, -71.08617653, 'MIT'],
+  ['place-chmnl', 42.361166, -71.070628, 'Charles MGH'],
+  ['place-dwnxg', 42.355518, -71.06022, 'Downtown Crossing'],
+  ['place-qnctr', 42.251809, -71.005409, 'Quincy Center'],
+  ['place-qamnl', 42.233391, 71.007153, 'Quincy Adams'],
+  ['place-asmnl', 42.284652, -71.06448899999999, 'Ashmont'],
+  ['place-wlsta', 42.2665139, -71.0203369, 'Wollaston'],
+  ['place-fldcr', 42.300093, -71.061667, 'Fields Corner'],
+  ['place-cntsq', 42.365486, -71.103802, 'Central Sq'],
+  ['place-brntn', 42.2078543, -71.0011385, 'Braintree']
 ];
 
 function setMarkers(map) {
@@ -166,192 +166,57 @@ function setMarkers(map) {
   };
   // Shapes define the clickable region of the icon. The type defines an HTML
   // <area> element 'poly' which traces out a polygon as a series of X,Y points.
-  // The final coordinate closes the poly by connecting to the first coordinate.
   var shape = {
     coords: [1, 1, 1, 20, 18, 20, 18, 1],
     type: 'poly'
   };
 
-  var sstat = new google.maps.Marker({
-  position: {lat:42.352271, lng: -71.05524200000001},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'South Station'
-});
 
-var andrw = new google.maps.Marker({
-  position: {lat:42.330154, lng:-71.057655},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Andrew'
-});
 
-var portr = new google.maps.Marker({
-  position: {lat: 42.3884, lng: -71.11914899999999},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Porter'
-});
-
-var harsq = new google.maps.Marker({
-  position: {lat:42.373362, lng:-71.118956},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Harvard'
-});
-
-var jfk = new google.maps.Marker({
-  position: {lat:42.320685, lng:-71.052391},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'jfk'
-});
-
-var shmnl = new google.maps.Marker({
-  position: {lat:42.31129, lng:-71.053331},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Savin Hill'
-});
-
-var pktrm = new google.maps.Marker({
-  position: {lat:42.35639457, lng:-71.0624242},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Park'
-});
-
-var brdwy = new google.maps.Marker({
-  position: {lat:42.342622, lng:-71.056967},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Broadway'
-});
-
-var nqncy = new google.maps.Marker({
-  position: {lat: 42.275275, lng:-71.029583},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'North Quincy'
-});
-
-var smmnl = new google.maps.Marker({
-  position: {lat:42.29312583, lng: -71.06573796000001},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Shawmut'
-});
-
-var davis = new google.maps.Marker({
-  position: {lat:42.39674, lng: -71.121815},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Davis'
-});
-
-var alfcl = new google.maps.Marker({
-  position: {lat: 42.395428, lng:-71.142483},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Alewife'
-});
-
-var knncl = new google.maps.Marker({
-  position: {lat:42.36249079, lng:-71.08617653},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'MIT'
-});
-
-var chmnl = new google.maps.Marker({
-  position: {lat:42.361166, lng:-71.070628},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Charles MGH'
-});
-
-var dwnxg = new google.maps.Marker({
-  position: {lat:42.355518, lng:-71.060225},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Downtown Xing'
-});
-
-var qnctr = new google.maps.Marker({
-  position: {lat:42.251809, lng:-71.005409},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Quincy Center'
-});
-
-var qamnl = new google.maps.Marker({
-  position: {lat:42.233391, lng:-71.007153},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Quincy Adams'
-});
-
-var wlsta = new google.maps.Marker({
-  position: {lat:42.2665139, lng: -71.0203369},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Wollaston'
-});
-
-var fldcr = new google.maps.Marker({
-  position: {lat:42.300093, lng: -71.061667},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Fields Corner'
-});
-
-var cntsq = new google.maps.Marker({
-  position: {lat:42.365486, lng:-71.103802},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Central Sq'
-});
-
-var brntn = new google.maps.Marker({
-  position: {lat:42.2078543, lng:-71.0011385},
-  icon: image,
-  shape: shape,
-  map: map,
-  title: 'Braintree'
-});
-
-  /*for (var i = 0; i < tstops.length; i++) {
+  for (var i = 0; i < tstops.length; i++) {
+    //Place a marker at each stop
     var stop = tstops[i];
     var marker = new google.maps.Marker({
       position: {lat: stop[1], lng: stop[2]},
       map: map,
       icon: image,
       shape: shape,
-      title: stop[0],
+      title: stop[3],
     });
-  }*/
-}
+  
 
+    // When marker is clicked, info window shows resulting JSON content  
+    marker.addListener('click', function(){
+      request = new XMLHttpRequest();
+      request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id="+stop[0], true);
+      
+      //load json messages for each stop
+      request.onreadystatechange = function() 
+      {
+        if (request.readyState == 4 && request.status == 200)
+        {
+          theData = request.responseText;
+          messages = JSON.parse(theData);
+          contentText = "<ul>";
+          for (k = 0; k < messages.length; k++) 
+          {
+            contentText += "<li>" + messages[k].arrival_time + "and " + messages[k].departure_time + "</li>";
+          }
+          contentText += "</ul>";
+        }
+      }
+      request.send();
+
+      // info windows show contentText 
+      infoWindow = new google.maps.InfoWindow;
+      infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
+      infoWindow.setContent(contentText);
+      infoWindow.open(map);
+    });
+  }
+  
+
+}
 
 
 
