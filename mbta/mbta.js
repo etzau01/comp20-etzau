@@ -17,6 +17,7 @@ function initMap() {
         map: map,
       });
 
+      // Render polyline and info window onclick
       myLoc.addListener('click', function(){
         var shortestDistance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(position.coords.latitude,position.coords.longitude), new google.maps.LatLng(42.284652,-71.06448899999999));
         for (var i = 0; i < tstops.length; i++)
@@ -26,15 +27,33 @@ function initMap() {
           if (distance <= shortestDistance){
             shortestDistance = distance;
             var nearest = stop[0];
-            //return;
+            var nearestlat = stop[1];
+            var nearestlng = stop[2];
           }
         }
+
+        //Render polyline from curr loc to nearest t stop
+        var nearestPathCoords = [
+          {lat: position.coords.latitude, lng:position.coords.longitude},
+          {lat: nearestlat, lng: nearestlng}
+        ];
+        var nearestPath = new google.maps.Polyline({
+          path: nearestPathCoords,
+          geodesic: true,
+          strokeColor: '#0000CD',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        nearestPath.setMap(map);
+
+        // Set up info window
         infoWindow = new google.maps.InfoWindow;
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Closest MBTA Station: ' + nearest);
+        infoWindow.setPosition(new google.maps.LatLng(position.coords.latitude +.01, position.coords.longitude));
+        infoWindow.setContent("<p>"+'Nearest MBTA Station: ' + nearest + "<br />"+ 'Distance: ' + shortestDistance*0.000621371 + ' mi' + "</p>");
         infoWindow.open(map);
       });
       map.setCenter(pos);
+
     }, 
     function() {
       handleLocationError(true, infoWindow, map.getCenter());
