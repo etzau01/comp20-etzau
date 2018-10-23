@@ -5,7 +5,7 @@ function initMap() {
   });
 
   // check geolocation
-  if (navigator.geolocation) {  
+  if (navigator.geolocation) {
 
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -126,7 +126,6 @@ function initMap() {
 
   linePath.setMap(map);
   forkPath.setMap(map);
-
 }
 
 // Data for the stop markers with name and LatLng 
@@ -172,7 +171,176 @@ function setMarkers(map) {
     coords: [1, 1, 1, 20, 18, 20, 18, 1],
     type: 'poly'
   };
-  for (var i = 0; i < tstops.length; i++) {
+
+  var sstat = new google.maps.Marker({
+  position: {lat:42.352271, lng: -71.05524200000001},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'South Station'
+});
+
+var andrw = new google.maps.Marker({
+  position: {lat:42.330154, lng:-71.057655},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Andrew'
+});
+
+var portr = new google.maps.Marker({
+  position: {lat: 42.3884, lng: -71.11914899999999},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Porter'
+});
+
+var harsq = new google.maps.Marker({
+  position: {lat:42.373362, lng:-71.118956},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Harvard'
+});
+
+var jfk = new google.maps.Marker({
+  position: {lat:42.320685, lng:-71.052391},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'jfk'
+});
+
+var shmnl = new google.maps.Marker({
+  position: {lat:42.31129, lng:-71.053331},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Savin Hill'
+});
+
+var pktrm = new google.maps.Marker({
+  position: {lat:42.35639457, lng:-71.0624242},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Park'
+});
+
+var brdwy = new google.maps.Marker({
+  position: {lat:42.342622, lng:-71.056967},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Broadway'
+});
+
+var nqncy = new google.maps.Marker({
+  position: {lat: 42.275275, lng:-71.029583},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'North Quincy'
+});
+
+var smmnl = new google.maps.Marker({
+  position: {lat:42.29312583, lng: -71.06573796000001},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Shawmut'
+});
+
+var davis = new google.maps.Marker({
+  position: {lat:42.39674, lng: -71.121815},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Davis'
+});
+
+var alfcl = new google.maps.Marker({
+  position: {lat: 42.395428, lng:-71.142483},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Alewife'
+});
+
+var knncl = new google.maps.Marker({
+  position: {lat:42.36249079, lng:-71.08617653},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'MIT'
+});
+
+var chmnl = new google.maps.Marker({
+  position: {lat:42.361166, lng:-71.070628},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Charles MGH'
+});
+
+var dwnxg = new google.maps.Marker({
+  position: {lat:42.355518, lng:-71.060225},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Downtown Xing'
+});
+
+var qnctr = new google.maps.Marker({
+  position: {lat:42.251809, lng:-71.005409},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Quincy Center'
+});
+
+var qamnl = new google.maps.Marker({
+  position: {lat:42.233391, lng:-71.007153},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Quincy Adams'
+});
+
+var wlsta = new google.maps.Marker({
+  position: {lat:42.2665139, lng: -71.0203369},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Wollaston'
+});
+
+var fldcr = new google.maps.Marker({
+  position: {lat:42.300093, lng: -71.061667},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Fields Corner'
+});
+
+var cntsq = new google.maps.Marker({
+  position: {lat:42.365486, lng:-71.103802},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Central Sq'
+});
+
+var brntn = new google.maps.Marker({
+  position: {lat:42.2078543, lng:-71.0011385},
+  icon: image,
+  shape: shape,
+  map: map,
+  title: 'Braintree'
+});
+
+  /*for (var i = 0; i < tstops.length; i++) {
     var stop = tstops[i];
     var marker = new google.maps.Marker({
       position: {lat: stop[1], lng: stop[2]},
@@ -180,9 +348,8 @@ function setMarkers(map) {
       icon: image,
       shape: shape,
       title: stop[0],
-      zIndex: stop[3]
     });
-  }
+  }*/
 }
 
 
@@ -192,67 +359,3 @@ function setMarkers(map) {
 
 
 
-/*var map;
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13
-    center: {lat: 42.352271, lng: -71.05524200000001},
-    mapTypeId: 'roadmap'
-  });
-
-  setMarkers(map);
-}
-
-var tstops = [
-  ['jfk', 42.320685, -71.052391],
-  ['shmnl', 42.31129, -71.053331],
-  ['pktrm', 42.35639457, -71.0624242],
-  ['brdwy', 42.342622, -71.0569672]
-];
-
-function setMarkers(map){
-  var image = {
-    url: 'https://cdn-images-1.medium.com/max/360/1*u_oCmFQK1PvE36p3OzTpzQ.png',
-    size: new google.maps.Size(30, 30),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(0, 0)
-  };
-
-  for (var i = 0; i < tstops.length; i++) {
-    var stop = tstops[i];
-    var marker = new google.maps.Marker({
-      position: {lat: stop[1], lng: stop[2]},
-      map: map,
-      icon: image
-    });
-  }
-}
-*/
-
-
-
-
-/*var jfk = new google.maps.Marker({
-  position: new google.maps.Latlng(42.320685,-71.052391),
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/MBTA.svg/768px-MBTA.svg.png',
-  map: map
-});
-
-var shmnl = new google.maps.Marker({
-  position: new google.maps.Latlng(42.31129,-71.053331),
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/MBTA.svg/768px-MBTA.svg.png',
-  map: map
-});
-
-var pktrm = new google.maps.Marker({
-  position: new google.maps.Latlng(42.35639457,-71.0624242),
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/MBTA.svg/768px-MBTA.svg.png',
-  map: map
-});
-
-var brdwy = new google.maps.Marker({
-  position: new google.maps.Latlng(42.342622,-71.0569672),
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/MBTA.svg/768px-MBTA.svg.png',
-  map: map
-});*/
