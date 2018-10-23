@@ -21,16 +21,18 @@ function initMap() {
         var shortestDistance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(position.coords.latitude,position.coords.longitude), new google.maps.LatLng(42.284652,-71.06448899999999));
         for (var i = 0; i < tstops.length; i++)
         {
+          var stop = tstops[i];
           var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(position.coords.latitude,position.coords.longitude), new google.maps.LatLng(stop[1], stop[2]));
-          var nearest = stop[0];
           if (distance <= shortestDistance){
-            distance = shortestDistance;
+            shortestDistance = distance;
+            var nearest = stop[0];
+            //return;
           }
         }
-          infoWindow = new google.maps.InfoWindow;
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Closest MBTA Station: ' + nearest);
-          infoWindow.open(map);
+        infoWindow = new google.maps.InfoWindow;
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Closest MBTA Station: ' + nearest);
+        infoWindow.open(map);
       });
       map.setCenter(pos);
     }, 
