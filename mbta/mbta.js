@@ -4,23 +4,25 @@ function initMap() {
     center: {lat: 42.352271, lng: -71.05524200000001}
   });
 
-  var myLoc = new google.maps.Marker({
-    position: navigator.geolocation,
-    map: map,
-  });
+  // check geolocation
+  if (navigator.geolocation) {  
 
-  // geolocation.
-  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      var myLoc = new google.maps.Marker({
+        position: pos,
+        map: map,
+    });
       map.setCenter(pos);
     }, 
     function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
+
+
   } 
   else {
     // Browser doesn't support Geolocation
@@ -38,6 +40,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 setMarkers(map);
 
+// Coordinates for Polyline
 var linePathCoords = [
   {lat: 42.395428, lng:-71.142483},
   {lat: 42.39674, lng:-71.121815},
@@ -68,7 +71,7 @@ var forkPathCoords = [
   {lat: 42.284652, lng:-71.06448899999999}
 ];
 
-
+//polyline for stops from Alewife to Braintree
 var linePath = new google.maps.Polyline({
   path: linePathCoords,
   geodesic: true,
@@ -77,6 +80,7 @@ var linePath = new google.maps.Polyline({
   strokeWeight: 2
 });
 
+//polyline from JFK to Ashmont
 var forkPath = new google.maps.Polyline({
   path: forkPathCoords,
   geodesic: true,
@@ -90,7 +94,7 @@ forkPath.setMap(map);
 
 }
 
-// Data for the markers consisting of a name, a LatLng 
+// Data for the stop markers with name and LatLng 
 var tstops = [
   ['sstat', 42.352271, -71.05524200000001],
   ['andrw', 42.330154, -71.057655],
