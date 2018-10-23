@@ -4,8 +4,39 @@ function initMap() {
     center: {lat: 42.352271, lng: -71.05524200000001}
   });
 
-  setMarkers(map);
+  var myLoc = new google.maps.Marker({
+    position: navigator.geolocation,
+    map: map,
+  });
 
+  // geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+    }, 
+    function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } 
+  else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+setMarkers(map);
 
 var linePathCoords = [
   {lat: 42.395428, lng:-71.142483},
@@ -20,7 +51,7 @@ var linePathCoords = [
   {lat: 42.352271, lng: -71.05524200000001},
   {lat: 42.342622, lng:-71.0569672},
   {lat: 42.330154, lng: -71.057655},
-  {lat: 42.320685, lng:-71.052391},
+  {lat: 42.320685, lng: -71.052391},
 
   {lat: 42.275275, lng:-71.029583},
   {lat: 42.2665139, lng:-71.0203369},
@@ -59,8 +90,7 @@ forkPath.setMap(map);
 
 }
 
-// Data for the markers consisting of a name, a LatLng and a zIndex for the
-// order in which these markers should display on top of each other.
+// Data for the markers consisting of a name, a LatLng 
 var tstops = [
   ['sstat', 42.352271, -71.05524200000001],
   ['andrw', 42.330154, -71.057655],
