@@ -157,64 +157,62 @@ var tstops = [
 function setMarkers(map) {
   var image = {
     url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    // This marker is 20 pixels wide by 32 pixels high.
     size: new google.maps.Size(20, 32),
-    // The origin for this image is (0, 0).
     origin: new google.maps.Point(0, 0),
-    // The anchor for this image is the base of the flagpole at (0, 32).
     anchor: new google.maps.Point(0, 32)
   };
-  // Shapes define the clickable region of the icon. The type defines an HTML
-  // <area> element 'poly' which traces out a polygon as a series of X,Y points.
   var shape = {
     coords: [1, 1, 1, 20, 18, 20, 18, 1],
     type: 'poly'
   };
 
-
-
   for (var i = 0; i < tstops.length; i++) {
-    //Place a marker at each stop
-    var stop = tstops[i];
-    var marker = new google.maps.Marker({
-      position: {lat: stop[1], lng: stop[2]},
-      map: map,
-      icon: image,
-      shape: shape,
-      title: stop[3],
-    });
-  
-
-    // When marker is clicked, info window shows resulting JSON content  
-    marker.addListener('click', function(){
-      request = new XMLHttpRequest();
-      request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id="+stop[0], true);
+        //Place a marker at each stop
+        stop = tstops[i];
+        var marker = new google.maps.Marker({
+          position: {lat: stop[1], lng: stop[2]},
+          map: map,
+          icon: image,
+          shape: shape,
+          title: stop[3],
+        });
       
-      //load json messages for each stop
-      request.onreadystatechange = function() 
-      {
-        if (request.readyState == 4 && request.status == 200)
-        {
-          theData = request.responseText;
-          messages = JSON.parse(theData);
-          contentText = "<ul>";
-          for (k = 0; k < messages.length; k++) 
+        // When marker is clicked, info window shows resulting JSON content  
+        marker.addListener('click', function(){
+          request = new XMLHttpRequest();
+          var key =  "5d139598cb69481eb0ec0c79431ebdd7";
+          request.open("GET", "https://api-v3.mbta.com/predictions?filter[route]=Red&filter[stop]=" + 'place-cntsq' + "&page[limit]=10&page[offset]=0&sort=departure_time&api_key="+ key, true);
+          
+          //load json messages for each stop
+          request.onreadystatechange = function() 
           {
-            contentText += "<li>" + messages[k].arrival_time + "and " + messages[k].departure_time + "</li>";
-          }
-          contentText += "</ul>";
-        }
-      }
-      request.send();
+            if (request.readyState == 4 && request.status == 200)
+            {
+              data = request.responseText;
+              messages = JSON.parse(data);
+              contentText = "<ul>";
+              for (k = 1; k < messages.data.length; k++) 
+              {
+                contentText += "<li> Arrival Time: " + messages.data[k].attributes.arrival_time + "<br />"+ " Departure Time: " + messages.data[k].attributes.departure_time + "</li>";
 
-      // info windows show contentText 
-      infoWindow = new google.maps.InfoWindow;
-      infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
-      infoWindow.setContent(contentText);
-      infoWindow.open(map);
-    });
+              }
+              contentText += "</ul>";
+               infoWindow = new google.maps.InfoWindow;
+                infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
+                infoWindow.setContent(contentText);
+                infoWindow.open(map);
+              function callBack(request)
+              {
+                document.getElementById("map").innerHTML = request.responseText;
+              }
+            }
+          }
+          request.send();
+
+          //info windows show contentText 
+         
+        });
   }
-  
 
 }
 
