@@ -197,22 +197,19 @@ function setMarkers(map) {
 
               }
               contentText += "</ul>";
-               infoWindow = new google.maps.InfoWindow;
-                infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
-                infoWindow.setContent(contentText);
-                infoWindow.open(map);
+              infoWindow = new google.maps.InfoWindow;
+              infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
+              infoWindow.setContent(contentText);
+              infoWindow.open(map);
               function callBack(request)
               {
                 document.getElementById("map").innerHTML = request.responseText;
               }
             }
           }
-          request.send();
-
-          //info windows show contentText 
-         
+          request.send();         
         });
-  }
+    }
 
 }
 
