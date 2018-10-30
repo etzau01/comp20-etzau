@@ -154,6 +154,31 @@ var tstops = [
   ['place-brntn', 42.2078543, -71.0011385, 'Braintree']
 ];
 
+var stopIds = [
+  'place-sstat',
+  'place-andrw',
+  'place-portr',
+  'place-harsq', 
+  'place-jfk',
+  'place-shmnl', 
+  'place-pktrm', 
+  'place-brdwy', 
+  'place-nqncy', 
+  'place-smmnl',
+  'place-davis',
+  'place-alfcl', 
+  'place-knncl', 
+  'place-chmnl', 
+  'place-dwnxg', 
+  'place-qnctr', 
+  'place-qamnl', 
+  'place-asmnl', 
+  'place-wlsta', 
+  'place-fldcr', 
+  'place-cntsq',
+  'place-brntn',
+];
+
 function setMarkers(map) {
   var image = {
     url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
@@ -179,16 +204,18 @@ function setMarkers(map) {
       
         // When marker is clicked, info window shows resulting JSON content  
         marker.addListener('click', function(){
-          request = new XMLHttpRequest();
+          var request = new Array();
+          request[i] = new XMLHttpRequest();
           var key =  "5d139598cb69481eb0ec0c79431ebdd7";
-          request.open("GET", "https://api-v3.mbta.com/predictions?filter[route]=Red&filter[stop]=" + 'place-cntsq' + "&page[limit]=10&page[offset]=0&sort=departure_time&api_key="+ key, true);
+          request[i].open("GET", "https://api-v3.mbta.com/predictions?filter[route]=Red&filter[stop]=" + stopIds[i] + "&page[limit]=10&page[offset]=0&sort=departure_time&api_key="+ key, true);
           
+          contentText = "";
           //load json messages for each stop
-          request.onreadystatechange = function() 
+          request[i].onreadystatechange = function() 
           {
-            if (request.readyState == 4 && request.status == 200)
+            if (request[i].readyState == 4 && request[i].status == 200)
             {
-              data = request.responseText;
+              data = request[i].responseText;
               messages = JSON.parse(data);
               contentText = "<ul>";
               for (k = 1; k < messages.data.length; k++) 
@@ -197,25 +224,25 @@ function setMarkers(map) {
 
               }
               contentText += "</ul>";
-              infoWindow = new google.maps.InfoWindow;
-              infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
-              infoWindow.setContent(contentText);
-              infoWindow.open(map);
-              function callBack(request)
-              {
-                document.getElementById("map").innerHTML = request.responseText;
-              }
+              callBack(contentText);
+           
             }
           }
-          request.send();         
+          request[i].send(); 
+                   
         });
     }
 
+
 }
 
-
-
-
+function callBack(contentText)
+{
+  infoWindow = new google.maps.InfoWindow;
+  infoWindow.setPosition({lat: stop[1]+.01, lng: stop[2]});
+  infoWindow.setContent(contentText);
+  infoWindow.open(map);
+}  
 
 
 
