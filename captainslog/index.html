@@ -8,84 +8,36 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        // Your work will be done here...
-
-      /* $(document).keypress(function(e) {
-            if(e.which == 13){
-                var current = new Date();
-                var msg = document.getElementById("msg").value;
-                document.getElementById("log").innerHTML = current + " - " + msg;
-                localStorage[new Date().getTime()] = current + msg;
-                reload();
-            }
-            else{
-                document.getElementById("log").innerHTML = output;
-
-            }
-        });
-        */
-
-        /*$(document).keypress(function(e) {
-            if(e.which == 13)
-            {
-                var current = new Date();
-                var txt = document.getElementById("msg").value;
-                localStorage[new Date().getTime()] = current + txt;
-                document.getElementById("log").innerHTML = current + " - " + txt;
-                //reload();
-            }
-            else{
-                document.getElementById("log").innerHTML = "";
-
-            }
-        }
-*/
-       /* function reload()
+        
+    $(document).keypress(function(e) {
+        if(e.which == 13)
         {
-            elem = document.getElementById("msg");
-            output = "";
-            for (var i = 0; i < localStorage.length; i++)
+            reload();
+            store();
+        }
+        else{
+            reload();
+        }
+    });
+
+    function reload() 
             {
-                output = output + "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>\n";
+                elem = document.getElementById("log");
+                output = "";
+            
+                for (var i = localStorage.length-1; i > 0; i--) {
+                    output = output + "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>\n";
+                }
+                elem.innerHTML = output;
             }
-            elem.innerHTML = output;
-        }*/
-        
-        
-$(document).keypress(function(e) {
-    if(e.which == 13)
+
+    function store() 
     {
+        now = new Date();
+        txt = document.getElementById("msg").value;
+        localStorage[new Date().getTime()] = now + " - " + txt;
         reload();
-        store();
     }
-    else{
-        document.getElementById("log").innerHTML = "";
-
-    }
-
-});
-
-function reload() 
-        {
-            elem = document.getElementById("log");
-            output = "";
-        
-            for (var i = localStorage.length-1; i > 0; i--) {
-                output = output + "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>\n";
-            }
-            elem.innerHTML = output;
-        }
-
-function store() 
-{
-    now = new Date();
-    txt = document.getElementById("msg").value;
-    localStorage[new Date().getTime()] = now + " - " + txt;
-    reload();
-}
-
-
-
 
     </script>
 </head>
