@@ -9,6 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         // Your work will be done here...
+        $(document).keypress(function(e) {
+            if(e.which == 13){
+                var current = new Date();
+                document.getElementById("log").innerHTML = current + " - " + document.getElementById("msg").value;
+            }
+            else{
+                document.getElementById("log").innerHTML = "hello world";
+
+            }
+        });
+        
+        
     </script>
 </head>
 
