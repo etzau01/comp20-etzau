@@ -7,17 +7,34 @@
 </head>
 
 <body>
-
-<p> Security: Breaking 2048 </p>
-
+<p>Security: 2048</p>
 <ol>
 	<li><p>Introduction: Provide a description of the product and what you were hired to do</p>
+		I was assigned a 2048 application, which records users' scores in a database. I was hired as a security consultant to document and resolve the security and privacy issues in this application. 
 	</li><br>
 	<li><p>Methodology: Describe your methodology pen testing the application, including the tools that you used</p>
 	</li><br>
 	<li><p>Abstract of Findings: Provide an overview of all the security and privacy issues you identified. This section should be written for non-technical managers who do not have technical expertise and do not have time to read the entire document. Write this section using lay language.</p>
 	</li><br>
 	<li><p>Issues Found</p></li>
+	<p> Issue 1: Cross Origin Resource Sharing </p>
+	<ul>
+		<li>Location: index.js, line 21</li>
+		<li> Severity: HIGH - Any site can send an XHR request and access the server's response</li>
+		<li> Description of issue: "*" is a wildcard. It gives access to any site to have cross origin.
+		<br><img src = "issue1.png" width=500 height=100 title="issue1" alt="issue1"> </li>
+		<li> Proof of vulnerability. Show pictures or it didn't happen.</li>
+		<li> Resolution: Specify which sites to give access to.</li>
+	</ul>
+	<p> Issue 2: Cross Site Scripting </p>
+	<ul>
+		<li>Location of the issue: the user input box which appears after a round of the game.</li>
+		<li> Severity of issue: HIGH - any user can enter scripting into the username input box and mess with the HTML. </li>
+		<li> Description of issue: XSS allows the user to enter javascript into the user input box. The server views this text as script and runs the script. I foudn this vulnerability by entering a simple script for an alert box with the text "XSS" into the username input.<br><img src = "issue2xss.png" width=500 height=300 title="issue2xss" alt="issue2xss"></li>
+		<li> Proof of vulnerability: <br><img src = "issue2.png" width=500 height=300 title="issue2" alt="issue2"> </li>
+		<li> Resolution: In your code, change < to "&(remove)lt" and > to "&(remove)gt". Then the data will no longer be interpreted as code.</li>
+	</ul>
+	<p> Issue 2 </p>
 	<ul>
 		<li>Issue (e.g., database injection, really bad programming practice)</li>
 		<li>Location or page where issue was found</li>
@@ -25,13 +42,17 @@
 		<li> Description of issue. How did you find it? A screenshot of problem is excellent.</li>
 		<li> Proof of vulnerability. Show pictures or it didn't happen.</li>
 		<li> Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible.</li>
-	</ul><br>
+	</ul>
+	<br>
 	<li><p>Conclusion: You can also list future considerations and recommendations with costs.</p>
 	</li><br>
-	<li><p>References:A list of references and links that you used for your work</p>
+	<li><p>References:</p>
+		<ul>
+			<li><a href="https://stackoverflow.com/questions/12001269/what-are-the-security-risks-of-setting-access-control-allow-origin">Cross-Origin Resource Sharing</a>
+			</li>
+		</ul>
 	</li><br>
 </ol>
-
 </body>
 </html>
 

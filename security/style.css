@@ -1,4 +1,14 @@
-p
+body
 {
-font-weight: bold;
+	font-family: "Cambria", Georgia, serif;
+}
+
+p 
+{
+	font-weight: bold;
+}
+
+img
+{
+	padding: 25px 50px
 }
