@@ -9,12 +9,12 @@
 <body>
 <p>Security: 2048</p>
 <ol>
-	<li><p>Introduction: Provide a description of the product and what you were hired to do</p>
+	<li><p>Introduction:</p>
 		I was assigned a 2048 application, which records users' scores in a database. I was hired as a security consultant to document and resolve the security and privacy issues in this application. 
 	</li><br>
-	<li><p>Methodology: Describe your methodology pen testing the application, including the tools that you used</p>
+	<li><p>Methodology: I read my partners code to check for the  vulnerabilities in indes.js such as CORS and hidden fields. I explored Burp Suite, but was not able to implement it.</p>
 	</li><br>
-	<li><p>Abstract of Findings: Provide an overview of all the security and privacy issues you identified. This section should be written for non-technical managers who do not have technical expertise and do not have time to read the entire document. Write this section using lay language.</p>
+	<li><p>Abstract of Findings: The first issue I found was one that allows any site on the internet to access this app's resources. The second issue was the ability of any user to insert executable commands into the username input box. The third issue was  </p>
 	</li><br>
 	<li><p>Issues Found</p></li>
 	<p> Issue 1: Cross Origin Resource Sharing </p>
@@ -24,7 +24,7 @@
 		<li> Description of issue: "*" is a wildcard. It gives access to any site to have cross origin.
 		<br><img src = "issue1.png" width=500 height=100 title="issue1" alt="issue1"> </li>
 		<li> Proof of vulnerability. Show pictures or it didn't happen.</li>
-		<li> Resolution: Specify which sites to give access to.</li>
+		<li> Resolution: Specify which sites to give access to. Change the header to Access-Control-Allow-Origin: uri</li>
 	</ul>
 	<p> Issue 2: Cross Site Scripting </p>
 	<ul>
@@ -44,12 +44,18 @@
 		<li> Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible.</li>
 	</ul>
 	<br>
-	<li><p>Conclusion: You can also list future considerations and recommendations with costs.</p>
+	<li><p>Conclusion: In the future, it would be helpful to utilize security tools such as Burp. In order to gain access to more features, we may look into obtaining a license for Burp Suite Enterprise Edition, which costs $399.00.</p>
 	</li><br>
 	<li><p>References:</p>
 		<ul>
 			<li><a href="https://stackoverflow.com/questions/12001269/what-are-the-security-risks-of-setting-access-control-allow-origin">Cross-Origin Resource Sharing</a>
 			</li>
+			<li>
+			<a href="https://tuftsdev.github.io/WebProgramming/notes/web_security.html">XSS</a>
+			</li>
+			<li>
+			<a href="https://support.portswigger.net/customer/portal/articles/2163777-using-burp-to-exploit-sql-injection-vulnerabilities-the-union-operator">Using Burp Suite to Exploit SQUL Injection Vulnerabilities"</a> 
+		</li>
 		</ul>
 	</li><br>
 </ol>
